@@ -30,6 +30,7 @@ from app.models.proxy import (
     ProxyTypes,
 )
 from app.models.user import ReminderType, UserDataLimitResetStrategy, UserStatus
+from app.models.tunnel import TunnelType, TunnelStatus
 
 
 class Admin(Base):
@@ -350,3 +351,25 @@ class NotificationReminder(Base):
     threshold = Column(Integer, nullable=True)
     expires_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class Tunnel(Base):
+    __tablename__ = "tunnels"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source_node_id = Column(Integer, ForeignKey("nodes.id"), nullable=False)
+    target_node_id = Column(Integer, ForeignKey("nodes.id"), nullable=False)
+    tunnel_type = Column(Enum(TunnelType), nullable=False, default=TunnelType.wireguard)
+    config = Column(String, nullable=False, default="{}")
+    is_active = Column(Boolean, default=True)
+    name = Column(String(256), nullable=True)
+    status = Column(Enum(TunnelStatus), nullable=False, default=TunnelStatus.connecting)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+
+    # Relationships
+    source_node = relationship("Node", foreign_keys=[source_node_id], backref="source_tunnels")
+    target_node = relationship("Node", foreign_keys=[target_node_id], backref="target_tunnels")
+
+    def __repr__(self):
+        return f"<Tunnel {self.id}: {self.source_node_id} -> {self.target_node_id}>"

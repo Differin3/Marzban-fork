@@ -21,6 +21,7 @@ import {
   MoonIcon,
   SquaresPlusIcon,
   SunIcon,
+  WifiIcon,
 } from "@heroicons/react/24/outline";
 import { DONATION_URL, REPO_URL } from "constants/Project";
 import { useDashboard } from "contexts/DashboardContext";
@@ -54,6 +55,7 @@ const HostsIcon = chakra(LinkIcon, iconProps);
 const NodesIcon = chakra(SquaresPlusIcon, iconProps);
 const NodesUsageIcon = chakra(ChartPieIcon, iconProps);
 const ResetUsageIcon = chakra(DocumentMinusIcon, iconProps);
+const TunnelsIcon = chakra(WifiIcon, iconProps);
 const NotificationCircle = chakra(Box, {
   baseStyle: {
     bg: "yellow.500",
@@ -167,6 +169,15 @@ export const Header: FC<HeaderProps> = ({ actions }) => {
                   >
                     {t("header.nodesUsage")}
                   </MenuItem>
+                  <Link to="/tunnels">
+                    <MenuItem
+                      maxW="170px"
+                      fontSize="sm"
+                      icon={<TunnelsIcon />}
+                    >
+                      {t("tunnel.title")}
+                    </MenuItem>
+                  </Link>
                   <MenuItem
                     maxW="170px"
                     fontSize="sm"

@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, VStack, SimpleGrid } from "@chakra-ui/react";
 import { CoreSettingsModal } from "components/CoreSettingsModal";
 import { DeleteUserModal } from "components/DeleteUserModal";
 import { Filters } from "components/Filters";
@@ -13,6 +13,7 @@ import { ResetUserUsageModal } from "components/ResetUserUsageModal";
 import { RevokeSubscriptionModal } from "components/RevokeSubscriptionModal";
 import { UserDialog } from "components/UserDialog";
 import { UsersTable } from "components/UsersTable";
+import { TunnelStats } from "components/TunnelStats";
 import { fetchInbounds, useDashboard } from "contexts/DashboardContext";
 import { FC, useEffect } from "react";
 import { Statistics } from "../components/Statistics";
@@ -27,6 +28,9 @@ export const Dashboard: FC = () => {
       <Box w="full">
         <Header />
         <Statistics mt="4" />
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mt="4">
+          <TunnelStats />
+        </SimpleGrid>
         <Filters />
         <UsersTable />
         <UserDialog />
