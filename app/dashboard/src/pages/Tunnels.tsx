@@ -62,6 +62,19 @@ export const Tunnels: FC = () => {
   // Fetch tunnels
   const fetchTunnels = async () => {
     try {
+      // Проверяем, существует ли API эндпоинт
+      const checkResponse = await fetch('/api/tunnels');
+      if (checkResponse.status === 404) {
+        // Если эндпоинт не существует, показываем сообщение об ошибке
+        toast({
+          title: t('tunnel.error.apiNotFound'),
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+      }
+      
       const response = await fetch('/api/tunnels');
       if (response.ok) {
         const data = await response.json();

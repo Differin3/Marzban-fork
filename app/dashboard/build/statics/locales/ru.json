@@ -238,6 +238,7 @@
   "tunnel.error.fetchNodesFailed": "Не удалось загрузить узлы",
   "tunnel.error.deleteFailed": "Не удалось удалить туннель",
   "tunnel.error.toggleFailed": "Не удалось переключить туннель",
+  "tunnel.error.apiNotFound": "API для туннелей не найден. Возможно, он не был реализован на сервере.",
   "tunnel.deleteConfirm.title": "Удалить туннель",
   "tunnel.deleteConfirm.message": "Вы уверены, что хотите удалить туннель \"{{name}}\"? Это действие нельзя отменить.",
   "common.refresh": "Обновить",

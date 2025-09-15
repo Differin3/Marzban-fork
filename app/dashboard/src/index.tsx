@@ -14,6 +14,10 @@ import { updateThemeColor } from "utils/themeColor";
 import { theme } from "../chakra.config";
 import App from "./App";
 import "index.scss";
+// Импортируем обработчик ошибок
+import { ErrorBoundary } from "./utils/errorHandler";
+// Импортируем обработчик ошибок DOM
+import "./utils/domErrorHandler";
 
 dayjs.extend(Timezone);
 dayjs.extend(LocalizedFormat);

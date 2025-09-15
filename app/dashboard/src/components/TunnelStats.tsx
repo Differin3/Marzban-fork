@@ -51,6 +51,15 @@ export const TunnelStats: FC<TunnelStatsProps> = ({ className }) => {
   useEffect(() => {
     const fetchTunnels = async () => {
       try {
+        // Проверяем, существует ли API эндпоинт
+        const checkResponse = await fetch('/api/tunnels');
+        if (checkResponse.status === 404) {
+          // Если эндпоинт не существует, просто не показываем статистику
+          console.log('Tunnels API endpoint not found');
+          setIsLoading(false);
+          return;
+        }
+        
         const response = await fetch('/api/tunnels?limit=10');
         if (response.ok) {
           const data = await response.json();

@@ -238,6 +238,7 @@
   "tunnel.error.fetchNodesFailed": "Failed to fetch nodes",
   "tunnel.error.deleteFailed": "Failed to delete tunnel",
   "tunnel.error.toggleFailed": "Failed to toggle tunnel",
+  "tunnel.error.apiNotFound": "Tunnels API not found. It might not be implemented on the server.",
   "tunnel.deleteConfirm.title": "Delete Tunnel",
   "tunnel.deleteConfirm.message": "Are you sure you want to delete tunnel \"{{name}}\"? This action cannot be undone.",
   "common.refresh": "Refresh",
