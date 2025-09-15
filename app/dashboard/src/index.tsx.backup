@@ -14,9 +14,6 @@ import { updateThemeColor } from "utils/themeColor";
 import { theme } from "../chakra.config";
 import App from "./App";
 import "index.scss";
-// Импортируем безопасные методы DOM
-import "./utils/safeDOM";
-
 
 dayjs.extend(Timezone);
 dayjs.extend(LocalizedFormat);
